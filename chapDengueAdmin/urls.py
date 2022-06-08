@@ -24,5 +24,6 @@ urlpatterns = [
     path('', include('chapDengue.urls.HomeUrls')),
     path('profile/', include('chapDengue.urls.ProfileUrls')),
     path('agente/', include('chapDengue.urls.AgenteUrls')),
-    path('visitas/', include('chapDengue.urls.VisitaUrls'))
+    path('visita/', include('chapDengue.urls.VisitaUrls')),
+    path('visitas/', include('chapDengue.urls.ListarVisitasUrls'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

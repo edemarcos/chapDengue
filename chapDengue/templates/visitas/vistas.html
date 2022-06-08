@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Visitas{% endblock %}
+{% block content %}
+<div id="content">
+    <div class="container">
+        <div class="alert alert-info">Foram encontrados: {{ visitas | length }} Visitas</div>
+        <div class="row">
+        {% for visita in visitas %}
+            <div class="col-xs-12 col-md-3 col-lg-3">
+                <div class="card mb-4">
+                    <div class="image-circle" style="background-image: url('/media/{{medic.image}}');"></div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{visita.cidade.get_full_name}}</h5>
+                        <a href={% url 'visitas' visita.agente %} class="btn btn-primary btn-card">Ver médico</a>
+                        <button class="btn btn-danger btn-card"><i class="fa fa-heart"></i> Favoritos</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
