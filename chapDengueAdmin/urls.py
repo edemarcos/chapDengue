@@ -17,13 +17,15 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from django.conf.urls.static import static
 from django.conf import settings
+from django.conf.urls import include
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('chapDengue.urls.HomeUrls')),
-    path('profile/', include('chapDengue.urls.ProfileUrls')),
+    path('', include('chapDengue.urls.AuthUrls')),
+    path('profile/', include('chapDengue.urls.ProfileUrls')),    
     path('agente/', include('chapDengue.urls.AgenteUrls')),
     path('visita/', include('chapDengue.urls.VisitaUrls')),
     path('visitas/', include('chapDengue.urls.ListarVisitasUrls'))

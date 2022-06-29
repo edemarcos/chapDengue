@@ -13,6 +13,6 @@ class Visita(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return '{} - {} - {} - {} - {} - {}'.format(self.cidade, self.focos, self.dia, self.rua, self.agente, self.descricao)
+        return '{} - {} - {} - {} - {} - {} - {}'.format(self.cidade, self.agente, self.rua, self.complemento, self.descricao, self.focos, self.dia)
 
  

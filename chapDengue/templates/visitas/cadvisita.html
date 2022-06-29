@@ -1,0 +1,34 @@
+{% extends "index.html" %}
+{% load static %}
+{% block title %}Cadastro de Visitas{% endblock %}
+{% block content %}
+<div id="content">
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <p>Cadastro de Visita</p>
+                <form name="cadVisitaForm" id="cadVisitaForm" action="" method="POST">
+                    {% csrf_token %}
+                    <!--{{CadVisitaForm.as_p}}-->
+                    <div class="form-group">Cidade: {{CadVisitaForm.cidade}}
+                        <input type="text" id="txtCodigo" name="txtCodigo" class="form-control" placeholder="Código"
+                            minlength="6" maxlength="6" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtNombre" name="txtNombre" class="form-control" placeholder="Nombre"
+                            maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="numCreditos" name="numCreditos" class="form-control" min="1" max="9"
+                            value="1" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

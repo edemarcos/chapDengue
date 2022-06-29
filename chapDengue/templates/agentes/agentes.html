@@ -1,0 +1,49 @@
+{% extends "index.html" %}
+{% load static %}
+{% block title %}Listagem de Agentes {% endblock %}
+{% block content %}
+<div id="content">
+
+        <div class="container-fluid">
+            <a href="#" class="btn btn-primary btn-card mb-4">Adicionar</a>
+                <div class="card shadow mb-4">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Agente</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Agente</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    {% for agente in agentes %}
+                                    <tr>
+                                    
+                                        <td>{{agente.name}}</td>
+                                        <td>{{agente.status}}</td>
+                                        <td>
+                                            <a href={% url 'profile' agente.id %} class="btn btn-secondary btn-card">Detalhes</a>
+                                            <a href={% url 'profile' agente.id %} class="btn btn-primary btn-card">Editar</a>
+                                            <a href={% url 'profile' agente.id %} class="btn btn-danger btn-card">Excluir</a>
+                                        </td>
+                                   
+                                    </tr>
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+</div>
+{% endblock %}

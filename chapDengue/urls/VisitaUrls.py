@@ -1,6 +1,6 @@
 from django.urls import path
-from chapDengue.views.VisitaView import list_visitas_view
+from chapDengue.views.VisitaView import cad_visita_view
 
 urlpatterns = [
-    path("", list_visitas_view, name='visitas'),
+    path("registrarVisita/", cad_visita_view, name='cadvisita'),
 ]

@@ -1,7 +1,7 @@
 from django.urls import path
-from chapDengue.views.AgenteView import list_agentes_view
+from chapDengue.views.AgenteView import list_agente_view
 
 urlpatterns = [
-    path("", list_agentes_view, name='agentes'),
+    path("", list_agente_view, name='agentes'),
 ]
 

@@ -1,0 +1,81 @@
+{% extends "index.html" %}
+{% load static %}
+{% block title %}Listagem de Visitas {% endblock %}
+{% block content %}
+<div id="content">
+
+        <div class="container-fluid mt-0">
+            <a href="{% url 'cadvisita' %}" class="btn btn-primary btn-card mb-4">Adicionar</a>
+            <p class="alert alert-info">Foram encontrados: {{ visitas | length }} visitas(s)</p>
+
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Cidade</th>
+                                        <th>Agente</th>
+                                        <th>Focos</th>
+                                        <th>Dia</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Cidade</th>
+                                        <th>Agente</th>
+                                        <th>Focos</th>
+                                        <th>Dia</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    {% for visita in visitas %}
+                                    <tr>
+                                        <td>{{visita.cidade}}</td>
+                                        <td>{{visita.agente}}</td>
+                                        <td>{{visita.focos}}</td>
+                                        <td>{{visita.dia}}</td>
+                                        <td>
+                                            <a href={% url 'profile' visita.id %} class="btn btn-secondary btn-card">Detalhes</a>
+                                            <a href={% url 'profile' visita.id %} class="btn btn-primary btn-card">Editar</a>
+                                            <a href={% url 'profile' visita.id %} class="btn btn-danger btn-card">Excluir</a>
+                                        </td>
+                                   
+                                    </tr>
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            
+            <!-- /.container-fluid -->
+            <div class="row">
+                <nav aria-label="Page navigation" class="navigation">
+                    <ul class="pagination">
+                        {% if visitas.has_previous %}
+                        <li class="page-item"><a class="page-link" href="?page=1{{ parameters }}">&laquo; Primeiro</a>
+                        </li>
+                        <li class="page-item"><a class="page-link"
+                                href="?page={{ visitas.previous_page_number }}{{ parameters }}">Anterior</ a>
+                        </li>
+                        {% endif %}
+                        <li class="page-item"><a class="page-link" href="#">Página {{ visitas.number }} de {{
+                                visitas.paginator.num_pages }}.</a></li>
+                        {% if visitas.has_next %}
+                        <li class="page-item"><a class="page-link"
+                                href="?page={{ visitas.next_page_number }}{{ parameters }}">Próximo</a></li>
+                        <li class="page-item"><a class="page-link"
+                                href="?page={{ visitas.paginator.num_pages }}{{ parameters }}">Último &raquo;</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+
+</div>
+{% endblock %}
